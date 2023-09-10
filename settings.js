@@ -1,8 +1,8 @@
 let notification = localStorage.getItem('notif') || 'true'
-
-let speed = localStorage.getItem('speed') || 1.5
+let speed = +localStorage.getItem('speed') || 1.5
 let check = document.querySelector('#hide-notif')
 let text_area = document.querySelector('#text-area')
+let range_speed = document.querySelector('#speed-range')
 
 
 $(document).ready(function() {
@@ -11,6 +11,8 @@ $(document).ready(function() {
   } else if (notification == 'true') {
     check.checked = false
   }
+  
+  range_speed.value = speed
 
   let text = full_data.map(e => e.name)
   full_data = text_area.value.trim().split('\n').map(e => { return { name: e } })
@@ -33,6 +35,8 @@ $('#hide-notif').on('input', function() {
 
 $('#speed-range').on('input', function() {
   speed = Number(this.value)
+  
+  localStorage.setItem('speed', this.value)
 })
 
 $('#enfource').click(function() {
