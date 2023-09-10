@@ -274,3 +274,9 @@ $('.sort-area').click(function(){
   setData()
   setWheel(data)
 })
+
+$('.random-area').click(function() {
+  randomField()
+  setData()
+  setWheel(data)
+})

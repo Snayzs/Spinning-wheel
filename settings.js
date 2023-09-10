@@ -49,9 +49,15 @@ $('#enfource').click(function() {
 })
 
 function sortField() {
-  console.log('');
   let sortedval = text_area.value.trim().split('\n').sort()
 
   text_area.value = sortedval.join('\n')
   full_data = sortedval.map(e => { return { name: e } })
+}
+
+function randomField(){
+  let randomVal = text_area.value.trim().split('\n').sort(() => Math.random() - 0.5)
+  
+  text_area.value = randomVal.join('\n')
+  full_data = randomVal.map(e => { return { name: e } })
 }
