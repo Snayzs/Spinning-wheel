@@ -78,7 +78,7 @@ body {
 
 #spin:before {
   z-index: 0;
-  top: -.7rem;
+  top: -0.6rem;
   content: "";
   position: absolute;
   width: 0;
@@ -102,6 +102,7 @@ body {
   color: #979797;
   font-weight: bold;
   font-size: 14pt;
+  z-index: 1;
 }
 
 #spin:active:after {

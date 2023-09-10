@@ -161,7 +161,7 @@ function setWheel(arr, condition = false) {
       'transform': 'rotate(' + degree * i + 'deg)'
     })
 
-    let extra = [0, 1750, 250, 105, 60, 40, 30, 25][arr.length - 1] || 20
+    let extra = [2000, 1750, 250, 105, 60, 40, 30, 25][arr.length - 1] || 20
 
     let radian = degree * (Math.PI / 180)
     let chord = (250 + extra) * Math.sin((radian / 2))
