@@ -39,6 +39,7 @@ $('#enfource').click(function() {
   full_data = [...xi_4]
   setData()
   setWheel(data)
+  
   text_area.value = full_data.map(e => e.name).join('\n')
 
   winners = []
@@ -46,3 +47,11 @@ $('#enfource').click(function() {
   $('#result ul').empty()
   $('.badge-result').empty()
 })
+
+function sortField() {
+  console.log('');
+  let sortedval = text_area.value.trim().split('\n').sort()
+
+  text_area.value = sortedval.join('\n')
+  full_data = sortedval.map(e => { return { name: e } })
+}

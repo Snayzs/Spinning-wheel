@@ -268,3 +268,9 @@ $('#teams-range').on('input', function() {
   setTeam()
   setResult(teams)
 });
+
+$('.sort-area').click(function(){
+  sortField()
+  setData()
+  setWheel(data)
+})
