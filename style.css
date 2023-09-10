@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+.wrapper {
+  position: relative;
+  margin: 5rem auto;
+  width: 250px;
+  height: 250px;
+}
+
+#wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 5px solid #ccc;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
+}
+
+#inner-wheel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform cubic-bezier(0, .99, .44, .99);
+  background: #42C0B2;
+}
+
+#inner-wheel .sec {
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: 0;
+  border-style: solid;
+  border-color: transparent transparent;
+  transform-origin: 50% 100%;
+}
+
+#wheel .sec .fa {
+  height: 125px;
+  position: absolute;
+  transform: translate(-50%,-120%) rotate(270deg);
+  display: flex;
+  align-items: center;
+  font-size: .6rem;
+  font-weight: bold;
+  color: #fff;
+  opacity: .8;
+  
+  white-space: nowrap;
+}
+
+#spin {
+  position: absolute;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
+  cursor: pointer;
+}
+
+#spin:before {
+  z-index: 0;
+  top: -.7rem;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 20px solid #fff;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+}
+
+#spin:after {
+  position: absolute;
+  content: "SPIN";
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
+  align-items: center;
+  color: #979797;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+#spin:active:after {
+  font-size: 13pt;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px inset;
+}
+
+.container {
+  width: 90%;
+  height: 20rem;
+}
