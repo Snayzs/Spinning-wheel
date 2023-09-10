@@ -1,11 +1,11 @@
 let notification = localStorage.getItem('notif') || 'true'
 
 let speed = localStorage.getItem('speed') || 1.5
+let check = document.querySelector('#hide-notif')
+let text_area = document.querySelector('#text-area')
+
 
 $(document).ready(function() {
-  let check = document.querySelector('#hide-notif')
-  let text_area = document.querySelector('#text-area')
-
   if (notification == 'false') {
     check.checked = true
   } else if (notification == 'true') {
@@ -39,4 +39,10 @@ $('#enfource').click(function() {
   full_data = [...xi_4]
   setData()
   setWheel(data)
+  text_area.value = full_data.map(e => e.name).join('\n')
+
+  winners = []
+  teams = Array.from({ length: 10 }, () => []);
+  $('#result ul').empty()
+  $('.badge-result').empty()
 })
