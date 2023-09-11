@@ -56,36 +56,37 @@ function setData() {
     return e.color = color[index]
   })
 
-  function sortedName(arr) {
-    return arr.map(e => {
-      let full_name = e.name.split(' ')
-      let [a, b, c] = full_name
-      let regex = /m[uo]hamm?ad/gi
-
-      if (regex.test(a)) {
-        if (!c) {
-          completed_name = a[0] + ' ' + b
-        } else {
-          if ((b.length + c.length) >= 10) {
-            completed_name = a[0] + ' ' + b + ' ' + c[0]
-          } else {
-            completed_name = b + ' ' + c
-          }
-        }
-      } else {
-        if (a.length >= 10 || !b) {
-          completed_name = a
-        } else {
-          if ((a.length + b.length) >= 10) {
-            completed_name = a + ' ' + b[0]
-          } else {
-            completed_name = a + ' ' + b
-          }
-        }
-      }
-
-      return { name: completed_name, color: e.color }
-    })
-  }
 }
 setData()
+
+function sortedName(arr) {
+  return arr.map(e => {
+    let full_name = e.name.split(' ')
+    let [a, b, c] = full_name
+    let regex = /m[uo]hamm?ad/gi
+
+    if (regex.test(a)) {
+      if (!c) {
+        completed_name = a[0] + ' ' + b
+      } else {
+        if ((b.length + c.length) >= 10) {
+          completed_name = a[0] + ' ' + b + ' ' + c[0]
+        } else {
+          completed_name = b + ' ' + c
+        }
+      }
+    } else {
+      if (a.length >= 10 || !b) {
+        completed_name = a
+      } else {
+        if ((a.length + b.length) >= 10) {
+          completed_name = a + ' ' + b[0]
+        } else {
+          completed_name = a + ' ' + b
+        }
+      }
+    }
+
+    return { name: completed_name, color: e.color }
+  })
+}

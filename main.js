@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   $('#spin').click(function() {
     degree = 360 * (data.length < 6 ? 8 : data.length)
-    
+
     $('#inner-wheel').css('transitionDuration', speed + 's')
 
     if (autoGenerate) {
@@ -51,6 +51,7 @@ $(document).ready(function() {
             for (var i = 0; i < winners.length; i++) {
               data = data.filter(item => item.name != winners[i])
             }
+
             if (notification == 'true')
               Swal.fire({
                 customClass: {
@@ -66,6 +67,7 @@ $(document).ready(function() {
               })
 
             setWheel(data, true)
+            setTextArea()
             spinnable = true
           }
         }, rotation_speed)
@@ -142,7 +144,7 @@ function sortWithIndeces(toSort) {
 function setWheel(arr, condition = false) {
   let degree = 360 / arr.length
 
-  if (condition) { $("#inner-wheel").html('') }
+  if (condition) $("#inner-wheel").empty()
 
   for (var i = 0; i < arr.length; i++) {
     let name = arr[i].name
@@ -223,7 +225,12 @@ function sortData() {
   setResult(!status ? sortedTeam : arr);
 }
 
-
+function clear() {
+  winners = []
+  teams = Array.from({ length: 10 }, () => []);
+  $('#result ul').empty()
+  $('.badge-result').empty()
+}
 
 
 //============Event Handler===========\\
@@ -244,24 +251,17 @@ $('.clear-result').click(() => {
     reverseButtons: true,
   }).then(res => {
     if (res.isConfirmed) {
-      winners = []
-      teams = Array.from({ length: 10 }, () => []);
-      $('#result ul').empty()
-      $('.badge-result').empty()
+      clear()
     }
   })
 })
 
 $('#auto-gen').on('input', function() {
   autoGenerate = this.checked
-  
+
   notification = 'false'
   speed = 0.5
 })
-
-$('#text-area').on('input', function() {
-  new_data = this.value.split('\n')
-});
 
 $('#teams-range').on('input', function() {
   range = Number(this.value)
@@ -269,7 +269,7 @@ $('#teams-range').on('input', function() {
   setResult(teams)
 });
 
-$('.sort-area').click(function(){
+$('.sort-area').click(function() {
   sortField()
   setData()
   setWheel(data)
