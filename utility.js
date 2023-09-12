@@ -42,12 +42,43 @@ $('#speed-range').on('input', function() {
   localStorage.setItem('speed', this.value)
 })
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  width: '75%',
+  timer: 2000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
 $('#enfource').click(function() {
-  full_data = [...xi_4]
-  setData()
-  setWheel(data)
+  Swal.fire({
+    customClass: {
+      confirmButton: 'btn btn-primary mx-2',
+      cancelButton: 'btn btn-danger mx-2'
+    },
+    buttonsStyling: false,
+    icon: 'info',
+    title: 'it will delete all results',
+    showCancelButton: true,
+    reverseButtons: true,
+  }).then(res => {
+    if (res.isConfirmed) {
+      full_data = [...xi_4]
+      setData()
+      setWheel(data)
+      setTextArea()
+      clear()
 
-  text_area.value = getTextArea()
-
-  clear()
+      setTimeout(() =>
+        Toast.fire({
+          icon: 'success',
+          title: 'Set up success'
+        }), 500)
+    }
+  })
 })
