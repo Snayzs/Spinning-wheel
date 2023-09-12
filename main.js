@@ -66,7 +66,7 @@ $(document).ready(function() {
                 confirmButtonText: 'Oke'
               })
 
-            setWheel(data, true)
+            setWheel(data)
             setTextArea()
             spinnable = true
           }
@@ -141,10 +141,10 @@ function sortWithIndeces(toSort) {
   return toSort;
 }
 
-function setWheel(arr, condition = false) {
+function setWheel(arr) {
   let degree = 360 / arr.length
 
-  if (condition) $("#inner-wheel").empty()
+  $("#inner-wheel").empty()
 
   for (var i = 0; i < arr.length; i++) {
     let name = arr[i].name
