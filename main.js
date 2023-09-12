@@ -232,6 +232,33 @@ function clear() {
   $('.badge-result').empty()
 }
 
+function sortField() {
+  let sortedval = getTextArea().sort()
+
+  text_area.value = sortedval.join('\n')
+  full_data = sortedval.map(e => ({ name: e }))
+}
+
+function randomField() {
+  let randomVal = getTextArea().sort(() => Math.random() - 0.5)
+
+  text_area.value = randomVal.join('\n')
+  full_data = randomVal.map(e => ({ name: e }))
+}
+
+function setTextArea() {
+  let newdata1 = data.map(e => e.name)
+  let newdata2 = full_data.map(e => e.name)
+
+  let text = newdata2.filter(full_name => {
+    let name = validation(full_name)
+
+    return newdata1.includes(name)
+  })
+
+  text_area.value = text.join('\n')
+}
+
 
 //============Event Handler===========\\
 $('.sort-result').click(() => {
