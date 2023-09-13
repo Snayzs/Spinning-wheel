@@ -39,10 +39,7 @@ let xi_4 = [
 let full_data = []
 let data = []
 
-function setData() {
-  data = sortedName(full_data)
-
-  const color = [
+const color = [
   '#16a085', '#2980b9', '#34495e',
   '#f39c12', '#d35400', '#0074e4',
   '#4caf50', '#ffc107', '#9c27b0',
@@ -51,11 +48,13 @@ function setData() {
   "#03a9f4", "#e91e63",
 ]
 
+function setData() {
+  data = sortedName(full_data)
+
   data.map(e => {
     let index = Math.round(Math.random() * (color.length - 1))
     return e.color = color[index]
   })
-
 }
 setData()
 
@@ -91,6 +90,6 @@ function validation(full_name) {
       }
     }
   }
-  
+
   return completed_name || ''
 }

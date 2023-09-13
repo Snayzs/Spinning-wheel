@@ -207,7 +207,7 @@ function setResult(arg) {
 
 function setTeam() {
   teams = Array.from({ length: 10 }, () => []);
-
+  
   winners.forEach((winner, index) => {
     const teamIndex = index % range;
     teams[teamIndex].push(winner)
@@ -257,6 +257,7 @@ function setTextArea() {
   })
 
   text_area.value = text.join('\n')
+  setTeam()
 }
 
 
