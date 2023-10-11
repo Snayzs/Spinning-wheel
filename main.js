@@ -288,7 +288,7 @@ $('#auto-gen').on('input', function() {
   autoGenerate = this.checked
 
   notification = 'false'
-  speed = 0.5
+  speed = 0.1
 })
 
 $('#teams-range').on('input', function() {

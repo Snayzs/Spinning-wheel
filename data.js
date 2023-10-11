@@ -66,7 +66,7 @@ function sortedName(arr) {
 }
 
 function validation(name) {
-  let full_name = name.replace(/[0-9]+/gi,'')
+  let full_name = name.replace(/[0-9]+\./gi,'').trim()
   let [a, b, c] = full_name.split(' ')
   let regex = /m[uo]hamm?ad/gi
 
@@ -81,7 +81,7 @@ function validation(name) {
       }
     }
   } else {
-    if (a.length >= 10 || !b) {
+    if (a.length >= 12 || !b) {
       completed_name = a
     } else {
       if ((a.length + b.length) >= 10) {
