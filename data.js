@@ -65,7 +65,8 @@ function sortedName(arr) {
   })
 }
 
-function validation(full_name) {
+function validation(name) {
+  let full_name = name.replace(/[0-9]+/gi,'')
   let [a, b, c] = full_name.split(' ')
   let regex = /m[uo]hamm?ad/gi
 
